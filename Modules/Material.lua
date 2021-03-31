@@ -369,7 +369,7 @@ function material:change_material_view( name )
 end
 
 function material:load_material_lib()
-    local file = loadfile( config.program_directory.."\\Material library\\mat_list.lua" )
+    local file = loadfile( "Material library\\mat_list.lua" )
     file()
     self.manager_lib.data:clear()
     for k, v in pairs( self.lib ) do
@@ -421,12 +421,14 @@ function material:update_mat_list( name )
     --file:write( "function mat_list_load()\n" )
     local k, v
     for k, v in pairs( material.lib ) do
-        local text = string.gsub( config.program_directory, "\\", "\\\\" )
+        print("ODD LINE, MATERIAL, 425")
+        local text = "" --string.gsub( config.program_directory, "\\", "\\\\" )
         file:write( "mat_file = loadfile( \""..text.."\\\\Material library\\\\"..k..".lua\")\nmat_file()\n" )
         if( name == k ) then name = nil end
     end
     if( name ~= nil ) then
-        local text = string.gsub( config.program_directory, "\\", "\\\\" )
+        print("ODD LINE, MATERIAL, 430")
+        local text = "" --string.gsub( config.program_directory, "\\", "\\\\" )
         file:write( "mat_file = loadfile( \""..text.."\\\\Material library\\\\"..name..".lua\")\nmat_file()\n" )
     end
     --file:write( "end\n" )

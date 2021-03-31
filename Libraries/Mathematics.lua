@@ -462,19 +462,16 @@ function Matrix:Solve_linsys_with_Espindola_solver( B )
         end
     end
     file:close()
-    --print( "C:\Users\Guilherme\Documents\Udesc\Albatroz\Albatroz Parametric v2.0\Libraries>solver_espindola.exe < ino > out" )
-    --os.execute( "\""..program_directory.."\\Libraries>solver_espindola.exe\" < ino > out" )
-    --os.execute( "solver_espindola.exe < in" )
-    local p = assert( io.popen( "solver_espindola.exe < in", 'r' ) )
+
+    local p = assert( io.popen( "Solver\\solver_espindola.exe < in", 'r' ), "error" )
     print( "Calculation complete" )
-    --print( "oi" )
     local mat = {}
     local i = 0
     for line in p:lines() do
         i = i + 1
         mat[ i ] = {}
         mat[ i ][ 1 ] = tonumber( line )
-        print( line )
+        --print( line )
     end
     p:close()
     return Matrix:new( mat )

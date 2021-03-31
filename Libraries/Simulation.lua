@@ -606,7 +606,7 @@ function STIFF:build( elements ) --Builds global stiffness matrix
     for k, v in pairs( elements ) do --For each element
         local node1 = self.id[ elements[ k ].node1_id ]
         local node2 = self.id[ elements[ k ].node2_id ]
-        print( node1, node2, (6*(node1 - 1)), (6*(node2 - 1)) )
+        --print( node1, node2, (6*(node1 - 1)), (6*(node2 - 1)) )
         local dof = {}
         dof[1]= 6*(node1-1)+1
         dof[2]= 6*(node1-1)+2
@@ -745,6 +745,7 @@ function SIM:run()
     Res[ self.name ].disp_nodes = Res[ self.name ]:build_displaced_nodes( 1 )--Treeview data format
     --self.disp = self.stiff:Solve_linsys_with_Cholesky( self.load )
     --self.disp:export_to_Excel()
+    print( "-----Run complete-----" )
 end
 
 Res = {} --List of all results

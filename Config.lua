@@ -1,12 +1,12 @@
---Linhas com "--" são comentários
+--Lines with "--" are comments
 
 lang = "English"
-program_directory = "D:\\Albatroz Parametric v2.0"
-working_directory = "D:\\Albatroz Parametric v2.0\\Projects"
+--working_directory and default_project path must be absolute paths
+working_directory = "D:\\AlbatrozFEM\\Projects"
 start_with_default_project = true
-default_project = "D:\\Albatroz Parametric v2.0\\Projects\\Backup 2\\Proto_carga_all_2_voo_duas_cavernas_laterais_viradas_diagonais_todas_15x3.pro"
-gmsh_folder = "D:\\Albatroz Parametric v2.0\\Gmsh"
-gmsh_model_folder = "D:/Albatroz Parametric v2.0/Gmsh"
+default_project = "D:\\AlbatrozFEM\\Projects\\Malha_Fuselagem_Voo.pro"
+gmsh_folder = "Gmsh"
+gmsh_model_folder = "Gmsh"
 default_inertia_acc_x = "0"
 default_inertia_acc_y = "-9.80665"
 default_inertia_acc_z = "0"

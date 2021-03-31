@@ -48,6 +48,9 @@ function GMSH:export( type, post ) --post = table with post-processing values
     if( type == "geometry" ) then
         print( "Exporting mesh geometry" )
         --self.file_path = "C:\\Users\\Guilherme\\Documents\\Udesc\\Albatroz\\gmsh\\".."\\"..self.name..".geo"
+        if not ( io.open( config.gmsh_model_folder.."/"..self.name..".geo", "r" ) ) then
+            print(config.gmsh_model_folder)
+        end
         self.file_path = config.gmsh_model_folder.."/"..self.name..".geo"
         --Pos file with ids and loads
         local file = io.open( config.gmsh_model_folder.."/"..self.name..".pos", "w" )

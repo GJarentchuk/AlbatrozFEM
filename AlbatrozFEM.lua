@@ -12,17 +12,17 @@ require("lgob.gdk")
 require("lgob.gtk")
 require("letk") --WARNING, a modified version of letk is being used, check init file foi info
 require("Libraries\\treeview")
-require("Libraries\\Mathematics")
-require("Libraries\\Simulation")
+require("Libraries\\Mathematics")-----
+require("Libraries\\Simulation")-----
 --require("Libraries\\Explicit_global_stiffness")
-require("Libraries\\GMSH")
+require("Libraries\\GMSH")-----
 --Modules
-require("Modules\\FEM")
-require("Modules\\MeshTools")
-require("Modules\\Material")
-require("Material Library\\mat_list")
+require("Modules\\FEM")-----
+require("Modules\\MeshTools")-----
+require("Modules\\Material")-----
+require("Material Library\\mat_list")-----
 --Languages
-require("Languages\\lang_en")
+require("Languages\\lang_en")-----
 --Warning: Capital letter denotes "class" while lower case with the same name denotes main class entity (see window)
 
 --FAZER CONFIG DA LINGUA
@@ -30,7 +30,7 @@ require("Languages\\lang_en")
 --Standard definitions
 std = {
     file = nil,
-    main_window_name = "Albatroz Parametric v2.0",
+    main_window_name = "AlbatrozFEM",
     icon_size = gtk.ICON_SIZE_SMALL_TOOLBAR, --Buttons icon size
 }
 
@@ -113,14 +113,21 @@ function build_toolbutton( is_stock, icon, label, type_of_button )
 end
 
 --Load Config.cfg file
+--Removed program_directory
 function load_config()
     local file = loadfile( "Config.lua" )
     file()
     config.lang                       = lang print( "Language = "..config.lang )
-    config.program_directory          = program_directory
-    config.working_directory          = working_directory
+    config.working_directory          = working_directory -- Projects folder
+    -- Check directory
+    if ( working_directory == "" ) or ( not ( io.open( working_directory, "r" ) ) ) then
+        config.working_directory = io.popen("cd"):read('*l') .. "\\Projects"
+    end
     config.start_with_default_project = start_with_default_project
     config.default_project            = default_project
+    if not ( io.open( default_project, "r" ) ) then
+        config.start_with_default_project = false
+    end
     config.gmsh_folder                = gmsh_folder
     config.gmsh_model_folder          = gmsh_model_folder
     config.default_inertia_acc_x      = default_inertia_acc_x
@@ -131,11 +138,10 @@ end
 --Save Config.cfg file
 function save_config()
     local file = io.open( "Config.lua", "w" )
-    file:write( "--Linhas com \"--\" são comentários\n\n" )
+    file:write( "--Lines with \"--\" are comments\n\n" )
     file:write( "lang = \""..config.lang.."\"\n" )
-        local text = string.gsub( config.program_directory, "\\", "\\\\" )
-    file:write( "program_directory = \""..text.."\"\n" )
         text = string.gsub( config.working_directory, "\\", "\\\\" )
+    file:write( "--working_directory and default_project path must be absolute paths\n" )
     file:write( "working_directory = \""..text.."\"\n" )
     file:write( "start_with_default_project = "..tostring( config.start_with_default_project ).."\n" )
         text = string.gsub( config.default_project, "\\", "\\\\" )
@@ -227,10 +233,10 @@ function preferences_window()
     pref.default_project_entry:set_text ( config.default_project )
 
 
-    pref.ok_but:connect             ( "clicked", function()
-                                                    --config.start_with_default_project = pref.default_project_entry:get( "active" )
-                                                    save_config()
-                                                    pref.window:destroy() end )
+    pref.ok_but:connect( "clicked", function()
+                         --config.start_with_default_project = pref.default_project_entry:get( "active" )
+                         save_config()
+                         pref.window:destroy() end )
     pref.working_dir_set_but:connect( "clicked", function() config.working_directory = pref.working_dir_entry:get_text() end )
     pref.default_project_button:connect( "toggled", function()
                                                         if( config.start_with_default_project == true ) then
@@ -419,6 +425,7 @@ function open_dialog()
     filter_all:set_name( "All files" )
     dialog:add_filter( filter_pro )
     dialog:add_filter( filter_all )
+    --print(config.working_directory)
     dialog:set_current_folder( config.working_directory )
 
     if( dialog:run() == gtk.RESPONSE_OK ) then
@@ -438,14 +445,14 @@ function open_project( filename )
     if( proj.name ~= nil )then
         Main.notebook:destroy()
         --fem.main_vbox:destroy()
-        std.main_window_name = "Albatroz Parametric v2.0"
+        std.main_window_name = "AlbatrozFEM"
         --Empty data
         materials = {}
         proj.material = {}
         material.manager_proj:update()
     end
     std.file = loadfile( filename )
-    print( std.file, filename, loadfile( filename ) )
+    --print( std.file, filename, loadfile( filename ) )
     std.file()
     --Project name and material
     proj.name = name

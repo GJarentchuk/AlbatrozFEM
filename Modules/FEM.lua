@@ -545,8 +545,9 @@ end
 
 
 --Functions using class (fix the others later)
+--NOT REALLY EXCEL, BUT TAB SEPARATED VALUES FILE
 function FEM:node_export_to_excel()
-    dialog = gtk.FileChooserDialog.new( "Export nodes", Main_window, gtk.FILE_CHOOSER_ACTION_SAVE,
+    dialog = gtk.FileChooserDialog.new( "Export nodes to tab seprated values (tsv) file", Main_window, gtk.FILE_CHOOSER_ACTION_SAVE,
                                        "gtk-cancel", gtk.RESPONSE_CANCEL, "gtk-ok", gtk.RESPONSE_OK )
 --    filter_pro = gtk.FileFilter.new()
 --    filter_all = gtk.FileFilter.new()
@@ -559,7 +560,7 @@ function FEM:node_export_to_excel()
     dialog:set_current_folder( config.working_directory )
 
     if( dialog:run() == gtk.RESPONSE_OK ) then
-        local filename = dialog:get_filename()
+        local filename = dialog:get_filename()..".tsv"
         local f = io.open( filename, 'w' )
         local node = self.node.data
         for i = 1, node.itens do
@@ -573,8 +574,9 @@ function FEM:node_export_to_excel()
     end
 end
 
+--NOT REALLY EXCEL, BUT TAB SEPARATED VALUES FILE
 function FEM:node_import_from_excel()
-    dialog = gtk.FileChooserDialog.new( "Import nodes", Main_window, gtk.FILE_CHOOSER_ACTION_OPEN,
+    dialog = gtk.FileChooserDialog.new( "Import nodes from tab separated values (tsv) file", Main_window, gtk.FILE_CHOOSER_ACTION_OPEN,
                                        "gtk-cancel", gtk.RESPONSE_CANCEL, "gtk-ok", gtk.RESPONSE_OK )
 --    filter_pro = gtk.FileFilter.new()
 --    filter_all = gtk.FileFilter.new()
@@ -850,13 +852,14 @@ function FEM:add_inertia_loads( a ) --a is a vector, but not the Class vector
             end
         end
     end
-    local f = io.open( config.program_directory.."\\Load.xls", 'w' )
-    local node = self.load.data
-    for i = 1, node.itens do
-        local row = node:get( i )
-        f:write( row[1].."\t"..row[2].."\t"..row[3].."\t"..row[4].."\n" )
-    end
-    f:close()
+    --print("ODD LINE, FEM, 854")
+    --local f = io.open( config.program_directory.."\\Load.xls", 'w' )
+    --local node = self.load.data
+    --for i = 1, node.itens do
+    --    local row = node:get( i )
+    --    f:write( row[1].."\t"..row[2].."\t"..row[3].."\t"..row[4].."\n" )
+    --end
+    --f:close()
 end
 
 function FEM:delete_load( selected )
@@ -1160,7 +1163,7 @@ function FEM:pre_check( view, buffer, iter ) --View is a text view
         end
     end
     view:print( "---Creating elements\n" )
-    print( "\n\nElements\n" )
+    --print( "\n\nElements\n" )
     for i = 1, elements.itens do
         local row = elements:get( i )
         local node1, node2
@@ -1319,6 +1322,7 @@ function FEM:get_scenarios_with_results()
     return names
 end
 
+--NOT REALLY EXCEL, BUT TAB SEPARATED VALUES FILE
 function FEM:export_results_txt_excel( filename )
     local f = io.open( filename, 'w' )
     f:write( "Element\tNode 1\tNode 2\tFailed ?\tMax Stress [MPa]\tPercentage of failure stress\tBuckling? (-1 is no)\tMass [kg]\tAxial stress [MPa]\tShear stress [MPa]\tTorsion stress [MPa]\tFlexion stress [MPa]\tMax Pure shear [MPa]\t\tNx node 1\tVy node 1\tVz node 1\tTx node 1\tMy node 1\tMz node 1\tNx node 2\tVy node 2\tVz node 2\tTx node 2\tMy node 2\tMz node 2\n" )
