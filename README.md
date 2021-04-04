@@ -1,5 +1,11 @@
 # AlbatrozFEM
-Albatroz FEM, know also as Albatroz Parametric v2.0
+Albatroz FEM, also known as Albatroz Parametric v2.0.
+
+# Table of contents
+
+
+
+
 
 **NEED TO SETUP GNU LICENCES**
 
