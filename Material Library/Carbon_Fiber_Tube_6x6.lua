@@ -1,0 +1,16 @@
+material.lib.Carbon_Fiber_Tube_6x6 = MATERIAL.new( "Carbon_Fiber_Tube_6x6", "Rectangular", "Standard", {
+	Izz = "86.6667", 
+	Iyy = "86.6667", 
+	E = "365000", 
+	fail = "325", 
+	G = "87500", 
+	width = "6", 
+	density = "1158.5", 
+	polar = "173.333", 
+	f_torsion = "10.83", 
+	f_shear_y = "1.2", 
+	height = "6", 
+	fail_type = "Composite", 
+	f_shear_z = "1.2", 
+	area = "20", 
+} )

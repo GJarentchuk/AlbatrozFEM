@@ -1,0 +1,15 @@
+material.lib.Aluminium_3_diam = MATERIAL.new( "Aluminium_3_diam", "Circular", "Standard", {
+	Izz = "3.976", 
+	Iyy = "3.976", 
+	E = "70000", 
+	G = "26316", 
+	fail = "150", 
+	density = "2780", 
+	f_shear_z = "1", 
+	polar = "7.952", 
+	f_shear_y = "1", 
+	diameter = "3", 
+	fail_type = "Ductile", 
+	f_torsion = "1", 
+	area = "7.068", 
+} )

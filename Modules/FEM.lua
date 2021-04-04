@@ -1,3 +1,23 @@
+--[[
+    This file is part of AlbatrozFEM.
+
+    AlbatrozFEM is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    AlbatrozFEM is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright (C) 2020 Guilherme Jarentchuk
+--]]
+
+
 require("lgob.gdk")
 require("lgob.gtk")
 
@@ -162,7 +182,7 @@ function FEM:element_view_build()
     element:add_column_text( Label.FEM.view_id, 30, self.view_change_element, { self, 1 } )
     element:add_column_text( Label.FEM.view_node1, 30 )
     element:add_column_text( Label.FEM.view_node2, 30 )
-    element:add_column_text( Label.MATERIAL.material_view, 30 )
+    element:add_column_text( Label.MATERIAL.material_view, 100 )
     element:add_column_text( Label.FEM.view_type, 30 )
     element:add_column_text( Label.FEM.view_length, 30 )
     element:add_column_text( Label.FEM.view_z_axis, 30, self.view_change_element, { self, 7 } )
@@ -852,7 +872,6 @@ function FEM:add_inertia_loads( a ) --a is a vector, but not the Class vector
             end
         end
     end
-    --print("ODD LINE, FEM, 854")
     --local f = io.open( config.program_directory.."\\Load.xls", 'w' )
     --local node = self.load.data
     --for i = 1, node.itens do
@@ -1598,6 +1617,10 @@ function fem.build()
     --toolbar
     fem.tool.add_scenario     = build_toolbutton( 0, "Icons\\tab_new_raised.png", Label.FEM.add_scenario, "all" )
     fem.tool.del_scenario     = build_toolbutton( 0, "Icons\\tab_remove.png", Label.FEM.del_scenario, "all" )
+    --
+    fem.tool.add_scenario:set_sensitive(false)
+    fem.tool.del_scenario:set_sensitive(false)
+    --
     fem.tool.add_node         = build_toolbutton( 1, "gtk-add", Label.FEM.add_node, "all" )
     fem.tool.pattern_add_node = build_toolbutton( 0, "Icons\\pattern_node_add.png", Label.FEM.pattern_add_node, "all" )
     fem.tool.delete_node      = build_toolbutton( 1, "gtk-cancel", Label.FEM.delete_node, "all" )

@@ -1,0 +1,16 @@
+material.lib.Steel_10x10 = MATERIAL.new( "Steel_10x10", "Rectangular", "Standard", {
+	Izz = "833.33", 
+	Iyy = "833.33", 
+	E = "210000", 
+	fail = "200", 
+	G = "80000", 
+	width = "10", 
+	density = "7860", 
+	polar = "1666.667", 
+	f_torsion = "1", 
+	f_shear_y = "1", 
+	height = "10", 
+	fail_type = "Ductile", 
+	f_shear_z = "1", 
+	area = "100", 
+} )

@@ -1,3 +1,23 @@
+--[[
+    This file is part of AlbatrozFEM.
+
+    AlbatrozFEM is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    AlbatrozFEM is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright (C) 2020 Guilherme Jarentchuk
+--]]
+
+
 --AlbatrozFEM main file
 
 --TO RUN: SET PATH=%CD%\\GTK2;%PATH% & lua AlbatrozFEM.lua
@@ -17,8 +37,8 @@ require("Libraries\\Simulation")-----
 --require("Libraries\\Explicit_global_stiffness")
 require("Libraries\\GMSH")-----
 --Modules
-require("Modules\\FEM")-----
-require("Modules\\MeshTools")-----
+require("Modules\\FEM")
+require("Modules\\MeshTools")
 require("Modules\\Material")-----
 require("Material Library\\mat_list")-----
 --Languages
@@ -384,9 +404,9 @@ function save_project( filename, new_name )
 end
 
 --Clone project (save as)
-function save_as( filename )
+function save_as( filename, new_folder )
     new_name = string.gsub( filename, ".pro", "" )
-    new_name = string.gsub( new_name, config.working_directory.."\\", "" )
+    new_name = string.gsub( new_name, new_folder.."\\", "" )
     save_project( filename, new_name )
 --    open_project( filename )
 end
@@ -406,7 +426,7 @@ function save_as_dialog()
     dialog:set_current_folder( config.working_directory )
     if( dialog:run() == gtk.RESPONSE_OK ) then
         local filename = dialog:get_filename()
-        save_as( filename )
+        save_as( filename, dialog:get_current_folder() )
         dialog:destroy()
     elseif( dialog:run() == gtk.RESPONSE_CANCEL ) then
         dialog:destroy()
@@ -536,6 +556,8 @@ function main()
     Main.Toolbar.preferences     = gtk.ToolButton.new( Main.Toolbar.preferences_icon, nil )
         Main.Toolbar.about_icon           = gtk.Image.new_from_stock( "gtk-about" )
     Main.Toolbar.about           = gtk.ToolButton.new( Main.Toolbar.about_icon, nil )
+    --
+    Main.Toolbar.about:set_sensitive(false)
 
     --Settings
     --Main window

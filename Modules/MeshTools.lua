@@ -1,3 +1,23 @@
+--[[
+    This file is part of AlbatrozFEM.
+
+    AlbatrozFEM is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    AlbatrozFEM is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright (C) 2020 Guilherme Jarentchuk
+--]]
+
+
 require("lgob.gdk")
 require("lgob.gtk")
 --require("Libraries\\STEP ISO 10303")
@@ -69,10 +89,11 @@ function mesh:export_dialog( scenario )
     local export = build_button( 1, "gtk-apply", Label.MESH.export_button, "all", std.icon_size )
 
     --FOR TESTING ONLY
-    folder_entry:set_text( config.program_directory.."\\Projects\\stp" )
+    folder_entry:set_text( config.working_directory )
 
     ----
     window:set_title( Label.MESH.export_window )
+
     filename_entry:set( "width-request", 90, "text", proj.name )
     folder_entry:set( "width-request", 150 )
 
@@ -700,7 +721,7 @@ function STEP:set_lines( scenario )
             pnt2[ i ] = self.node_lines[ row[3] ][ i + 1 ]
         end
         local direction = vector.new( pnt1, pnt2 )
-        self.used_lines[ line ] = { "DIRECTION", tostring( row[ 1 ] ), "#"..line.."=DIRECTION('"..row[ 1 ].."',("..direction.normalized[1]..","..direction.normalized[2]..","..direction.normalized[3].."));" }
+        self.used_lines[ line ] = { "DIRECTION", tostring( row[ 1 ] ), "#"..line.."=DIRECTION('"..row[ 1 ].."',("..direction.unit[1]..","..direction.unit[2]..","..direction.unit[3].."));" }
     end
     --Set vectors
     for i = 1, scenario.element.data.itens do

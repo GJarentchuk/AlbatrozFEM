@@ -1,0 +1,16 @@
+material.lib.Birch_Wood_15X9 = MATERIAL.new( "Birch_Wood_15X9", "Rectangular", "Standard", {
+	Izz = "2531.25", 
+	Iyy = "911.25", 
+	E = "5500", 
+	fail = "50", 
+	G = "1850", 
+	width = "9", 
+	density = "670", 
+	polar = "3442.5", 
+	f_torsion = "1.57", 
+	f_shear_y = "1.2", 
+	height = "15", 
+	fail_type = "Fragile", 
+	f_shear_z = "1.2", 
+	area = "135", 
+} )

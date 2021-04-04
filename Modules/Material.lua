@@ -1,3 +1,23 @@
+--[[
+    This file is part of AlbatrozFEM.
+
+    AlbatrozFEM is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    AlbatrozFEM is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
+
+    Copyright (C) 2020 Guilherme Jarentchuk
+--]]
+
+
 require("lgob.gdk")
 require("lgob.gtk")
 
@@ -421,13 +441,11 @@ function material:update_mat_list( name )
     --file:write( "function mat_list_load()\n" )
     local k, v
     for k, v in pairs( material.lib ) do
-        print("ODD LINE, MATERIAL, 425")
         local text = "" --string.gsub( config.program_directory, "\\", "\\\\" )
         file:write( "mat_file = loadfile( \""..text.."\\\\Material library\\\\"..k..".lua\")\nmat_file()\n" )
         if( name == k ) then name = nil end
     end
     if( name ~= nil ) then
-        print("ODD LINE, MATERIAL, 430")
         local text = "" --string.gsub( config.program_directory, "\\", "\\\\" )
         file:write( "mat_file = loadfile( \""..text.."\\\\Material library\\\\"..name..".lua\")\nmat_file()\n" )
     end
