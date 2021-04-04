@@ -3,7 +3,7 @@
 lang = "English"
 --working_directory and default_project path must be absolute paths
 working_directory = "D:\\AlbatrozFEM\\Projects"
-start_with_default_project = true
+start_with_default_project = false
 default_project = "D:\\AlbatrozFEM\\Projects\\Example-Fuselage-Flight.pro"
 gmsh_folder = "Gmsh"
 gmsh_model_folder = "Gmsh"

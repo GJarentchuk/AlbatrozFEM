@@ -1,0 +1,1 @@
+SET PATH=%CD%\\GTK2;%PATH% & lua AlbatrozFEM.lua

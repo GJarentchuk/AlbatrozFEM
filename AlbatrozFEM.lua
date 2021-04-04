@@ -20,7 +20,7 @@
 
 --AlbatrozFEM main file
 
---TO RUN: SET PATH=%CD%\\GTK2;%PATH% & lua AlbatrozFEM.lua
+--TO RUN write on CMD: "SET PATH=%CD%\\GTK2;%PATH% & lua AlbatrozFEM.lua"
 
 --Add GTK2 to lua module search folders
 local curr_dir = io.popen("cd"):read('*l')
