@@ -2,7 +2,9 @@
 
 Albatroz FEM is a Finite Element Method (FEM) software developed for simplified structural analysis, mostly developed in Lua. It uses unidimensional (1D) modified Euler beam elements, with corrections that attempts to better represent shear stresses for shorter beams.
 
-![](Doc.%20Images/Intro.jpg?raw=true)
+![](Doc.%20Images/Intro.jpg?raw=true "Introduction")
+
+
 
 Most of the program was developed back in 2012 to assist [Albatroz Team](https://equipealbatroz.com.br/) from Santa Catarina State University (UDESC - Joinville, Brazil) aircraft design for the national SAE Aerodesign competition. This version is a patch of the original code to provide minor bug fixes and to run the program without having to install many additional dependencies.
 
