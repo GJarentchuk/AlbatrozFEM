@@ -300,6 +300,8 @@ function new_project( filename, save_as )
     std.file = io.open( config.working_directory.."\\"..filename..".pro", "w" )
     std.file:write( "name = ".."\""..filename.."\"\n" )
     std.file:write( "sce = {}\n" )
+    std.file:write( "fem.sce.sce1 = FEM.new( \"sce1\" )\n" )
+    std.file:write( "mesh.sce.sce1 = MESH.new( \"sce1\" )\n" )
     std.file:write( "materials = {}\n" )
     std.file:close()
     filename = config.working_directory.."\\"..filename..".pro"

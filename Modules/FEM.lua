@@ -1300,6 +1300,7 @@ function FEM:run_dialog()
     local run         = build_button( 1, "gtk-execute", Label.FEM.run_button, "all", std.icon_size )
     local cancel      = build_button( 1, "gtk-cancel", Label.button_cancel, "all", std.icon_size )
     local open_script = build_button( 1, "gtk-open", Label.FEM.open_script, "all", std.icon_size )
+    open_script:set_sensitive(false)
 
     --
     window:set_title( Label.FEM.run_window )

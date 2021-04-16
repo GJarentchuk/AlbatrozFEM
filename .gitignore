@@ -3,5 +3,6 @@ in
 solver_debug.txt
 Projects/Malha_Fuselagem_Voo.pro
 Projects/Proto_carga_no_2_voo_duas_cavernas_laterais_viradas_diagonais_todas_15x3.pro
-
-
+Projects/aaaa.pro
+/Gmsh/sce1.geo
+/Gmsh/sce1.pos
