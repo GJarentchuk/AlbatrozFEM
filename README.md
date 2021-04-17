@@ -12,9 +12,20 @@ The goal was to provide a structural analysis tool with a mathematical model tha
 Internally among Albatroz members, this program is known as Albatroz Parametric, as it was intended later on adding structural optimization tools.
 
 AlbatrozFEM is written in Lua and was only tested for Windows. It uses the following third party tools:
-  * A simple linear system solver written in C, by Guilherme Espíndola;
+  * A simple linear system solver written in C, by Guilherme EspÃ­ndola;
   * treeview.lua is part of nadzoru, by Yuri Kaszubowski Lopes;
-  * [Gmsh](https://gmsh.info/) as 3D mesh and result visualisation tool, by Christophe Geuzaine and Jean-François Remacle.
+  * [Gmsh](https://gmsh.info/) as 3D mesh and result visualisation tool, by Christophe Geuzaine and Jean-FranÃ§ois Remacle.
+
+## Table of contents
+- [Instalation](#instalation)
+- [Basic Usage](#basic-usage)
+   - [Finite Elements tab](#finite-elements-tab)
+     - [Running the simulation - Config and run simulation button](#running-the-simulation---config-and-run-simulation-button)
+     - [View results](#view-results)
+   - [Material-component tab](#material-component-tab)
+   - [MeshTools tab](#meshtools-tab-%28unfinished%29)
+- [Known Issues](#known-issues)
+- [License](#license)
 
 
 ## Instalation
@@ -79,7 +90,7 @@ Upon creating or loading a project:
 * Delete load: similar to "Delete node".
 Add inertia loads: adds loads to simulate inertial forces, like weight or accelerations. The acceleration component values typed in the dialog fields are then multiplied individually by each element mass. The resulting load vectors are then split between both element nodes. 
  
-#### Running the simulation: Config and run simulation button
+#### Running the simulation - Config and run simulation button
 
 Before running the simulation, the program shows the number of nodes and size of stiffness matrix. It also checks for data entry errors and tries to generate all the necessary calculation matrices. Possible error messages:
 * Node with same id found! Make sure all node IDs are unique.
