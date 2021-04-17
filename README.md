@@ -22,8 +22,8 @@ AlbatrozFEM is written in Lua and was only tested for Windows. It uses the follo
    - [Finite Elements tab](#finite-elements-tab)
      - [Running the simulation - Config and run simulation button](#running-the-simulation---config-and-run-simulation-button)
      - [View results](#view-results)
-   - [Material-component tab](#material-component-tab)
-   - [MeshTools tab](#meshtools-tab-%28unfinished%29)
+   - [Material-component tab]#material-component-tab)
+   - [MeshTools tab](http://github.com/GJarentchuk/AlbatrozFEM/REDAME.md#meshtools-tab-%28unfinished%29)
 - [Known Issues](#known-issues)
 - [License](#license)
 
