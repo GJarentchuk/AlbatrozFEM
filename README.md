@@ -23,7 +23,7 @@ AlbatrozFEM is written in Lua and was only tested for Windows. It uses the follo
      - [Running the simulation - Config and run simulation button](#running-the-simulation---config-and-run-simulation-button)
      - [View results](#view-results)
    - [Material-component tab](#material-component-tab)
-   - [MeshTools tab](http://github.com/GJarentchuk/AlbatrozFEM/REDAME.md#meshtools tab (unfinished))
+   - [MeshTools tab -unfinished-](#meshtools-tab--unfinished-)
 - [Known Issues](#known-issues)
 - [License](#license)
 
@@ -174,7 +174,7 @@ These coefficients are used to make compensations around some limitations of the
     ![](Doc.%20Images/Beta_table.png?)
 
 
-### MeshTools tab (unfinished)
+### MeshTools tab -unfinished-
 
 ![](Doc.%20Images/MT.png?)
 
