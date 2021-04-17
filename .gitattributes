@@ -1,3 +1,3 @@
-special-vendored-path/* linguist-vendored
-Gmsh/* linguist-vendored
-GTK2/* linguist-vendored
+# special-vendored-path/* linguist-vendored
+Gmsh/* linguist-vendored=true
+GTK2/* linguist-vendored=true
