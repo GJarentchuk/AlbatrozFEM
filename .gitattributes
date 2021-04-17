@@ -1,3 +1,1 @@
-Gmsh/* linguist-vendored=true
-GTK2/* linguist-vendored=true
-*.c++ linguist-detectable=false
+*.cpp linguist-detectable=false
