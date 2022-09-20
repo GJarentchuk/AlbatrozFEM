@@ -365,6 +365,9 @@ function ElementType.Standard:eval_critial_points_stresses()
             local axial   = self:get_axial_stress( Fx, i )
             local torsion = self:get_torsional_stress( Mx, node )
             local z_norm, y_norm = (Mz/((Mz^2 + My^2)^0.5)), (My/((Mz^2 + My^2)^0.5))
+            if( (Mz == 0) and (My == 0) ) then
+                Mz, My = 0, 0
+            end
             points[1 + (i-1)*2] = { axial, self:get_shearload_stress( Fy, Fz, i, 0, 0, nil ), torsion, self:get_flexion_stress( My, Mz, i, -(self.out_diameter/2)*z_norm, (self.out_diameter/2)*y_norm ) }
             points[2 + (i-1)*2] = { axial, self:get_shearload_stress( Fy, Fz, i, 0, 0, nil ), torsion, self:get_flexion_stress( My, Mz, i, (self.out_diameter/2)*z_norm, -(self.out_diameter/2)*y_norm ) }
         end
@@ -444,7 +447,7 @@ function ElementType.Standard:composite_uni_dir_rod_failure( c_points ) --Simpli
     --  All elements are assumed to have 0° of fibre orientation
     --  Elements don't have sigma_2
     --  Shear strenght is assumed to be 20 times lower then failure (should be tensile strength)
-    local c_p
+    local c_p = 1
     local max_tsai_hill = 0
     self.critical = {}
     for i = 1, #c_points do
